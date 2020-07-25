@@ -7,7 +7,11 @@
 
 import Foundation
 
-class MainNavCoordinator: NavCoordinator {
+protocol PokemonControllerContainingNavCoordinator: NavCoordinator {
+	var pokemonController: PokemonController { get }
+}
+
+class MainNavCoordinator: PokemonControllerContainingNavCoordinator {
 	var childCoordinators: [NavCoordinator] = []
 
 	let pokemonController: PokemonController
@@ -18,4 +22,10 @@ class MainNavCoordinator: NavCoordinator {
 		pokemonController.loadPokemonList()
 	}
 
+}
+
+extension MainNavCoordinator: PokemonListNavCoordinator {
+	func getPokemonDetailView(from result: PokemonResult) -> PokemonDetail {
+		PokemonDetail(pokemonResult: result, detailCoordinator: self)
+	}
 }

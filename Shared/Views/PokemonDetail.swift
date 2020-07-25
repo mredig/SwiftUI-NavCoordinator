@@ -7,14 +7,16 @@
 
 import SwiftUI
 
+protocol PokemonDetailNavCoordinator: PokemonControllerContainingNavCoordinator {}
+
 struct PokemonDetail: View {
 
 	let pokemonResult: PokemonResult
 	let pokemon: Pokemon?
-	let detailCoordinator: MainNavCoordinator
+	let detailCoordinator: PokemonControllerContainingNavCoordinator
 	@ObservedObject var pokemonController: PokemonController
 
-	init(pokemonResult: PokemonResult, detailCoordinator: MainNavCoordinator) {
+	init(pokemonResult: PokemonResult, detailCoordinator: PokemonControllerContainingNavCoordinator) {
 		self.detailCoordinator = detailCoordinator
 		self.pokemonResult = pokemonResult
 		self.pokemonController = detailCoordinator.pokemonController
@@ -29,8 +31,9 @@ struct PokemonDetail: View {
     }
 }
 
-//struct PokemonDetail_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PokemonDetail()
-//    }
-//}
+struct PokemonDetail_Previews: PreviewProvider {
+    static var previews: some View {
+		let dodrio = PokemonResult(name: "dodrio", url: URL(string: "https://pokeapi.co/api/v2/pokemon/85/")!)
+		PokemonDetail(pokemonResult: dodrio, detailCoordinator: MainNavCoordinator(pokemonController: PokemonController()))
+    }
+}

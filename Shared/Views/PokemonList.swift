@@ -7,12 +7,16 @@
 
 import SwiftUI
 
+protocol PokemonListNavCoordinator: PokemonControllerContainingNavCoordinator {
+	func getPokemonDetailView(from result: PokemonResult) -> PokemonDetail
+}
+
 struct PokemonList: View {
 
-	let navCoordinator: MainNavCoordinator
+	let navCoordinator: PokemonListNavCoordinator
 	@ObservedObject var pokemonController: PokemonController
 
-	init(navCoordinator: MainNavCoordinator) {
+	init(navCoordinator: PokemonListNavCoordinator) {
 		self.navCoordinator = navCoordinator
 		self.pokemonController = navCoordinator.pokemonController
 	}
@@ -20,7 +24,7 @@ struct PokemonList: View {
 	var body: some View {
 		List(pokemonController.pokemonList, id: \.id) { pokemon in
 			NavigationLink(
-				destination: PokemonDetail(pokemonResult: pokemon, detailCoordinator: navCoordinator),
+				destination: navCoordinator.getPokemonDetailView(from: pokemon),
 				label: {
 					Text(pokemon.name.capitalized)
 				})
