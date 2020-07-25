@@ -10,7 +10,6 @@ import SwiftUI
 protocol PokemonDetailNavCoordinator: PokemonControllerContainingNavCoordinator {}
 
 struct PokemonDetail: View {
-
 	let pokemonResult: PokemonResult
 	let pokemon: Pokemon?
 	let detailCoordinator: PokemonControllerContainingNavCoordinator

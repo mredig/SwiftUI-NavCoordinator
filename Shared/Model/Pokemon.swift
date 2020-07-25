@@ -18,7 +18,7 @@ struct PokemonPagingResult: Codable {
 	let results: [PokemonResult]
 }
 
-struct PokemonResult: Codable {
+struct PokemonResult: Codable, Identifiable {
 	typealias ListResult = Result<[Self], Error>
 	typealias SingleResult = Result<Self, Error>
 
