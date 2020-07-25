@@ -29,3 +29,5 @@ extension MainNavCoordinator: PokemonListNavCoordinator {
 		PokemonDetail(pokemonResult: result, detailCoordinator: self)
 	}
 }
+
+extension MainNavCoordinator: PokemonDetailNavCoordinator {}

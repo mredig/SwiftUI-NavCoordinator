@@ -12,10 +12,10 @@ protocol PokemonDetailNavCoordinator: PokemonControllerContainingNavCoordinator 
 struct PokemonDetail: View {
 	let pokemonResult: PokemonResult
 	let pokemon: Pokemon?
-	let detailCoordinator: PokemonControllerContainingNavCoordinator
+	let detailCoordinator: PokemonDetailNavCoordinator
 	@ObservedObject var pokemonController: PokemonController
 
-	init(pokemonResult: PokemonResult, detailCoordinator: PokemonControllerContainingNavCoordinator) {
+	init(pokemonResult: PokemonResult, detailCoordinator: PokemonDetailNavCoordinator) {
 		self.detailCoordinator = detailCoordinator
 		self.pokemonResult = pokemonResult
 		self.pokemonController = detailCoordinator.pokemonController
@@ -23,10 +23,17 @@ struct PokemonDetail: View {
 	}
 
 	var body: some View {
-		Text(pokemon?.name ?? "Loading")
-			.onAppear {
-				pokemonController.loadPokemon(from: pokemonResult)
+		if let pokemon = pokemon {
+			HStack {
+				Text(pokemon.name)
+				Text("\(pokemon.id)")
 			}
+		} else {
+			Text("Loading")
+				.onAppear {
+					pokemonController.loadPokemon(from: pokemonResult)
+				}
+		}
 	}
 }
 
