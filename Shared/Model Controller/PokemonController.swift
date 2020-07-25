@@ -14,10 +14,26 @@ class PokemonController: ObservableObject {
 
 	static let baseURL = URL(string: "https://pokeapi.co/api/v2/")!
 
-	init() {
+	private let networkLoader: NetworkLoader
+
+	init(networkLoader: NetworkLoader = URLSession.shared) {
 		let decoder = JSONDecoder()
 		decoder.keyDecodingStrategy = .convertFromSnakeCase
 		NetworkRequest.defaultDecoder = decoder
+
+		self.networkLoader = networkLoader
+	}
+
+	@discardableResult func genericNetworkingRequest<ResultType: Decodable>(request: NetworkRequest,
+																			usingCache: Bool = false,
+																			completion: @escaping (Result<ResultType, Error>) -> Void) -> NetworkLoadingTask? {
+		NetworkHandler.default.transferMahCodableDatas(
+			with: request,
+			usingCache: usingCache,
+			session: networkLoader) { (result: Result<ResultType, NetworkError>) in
+			// use flatmap to cast NetworkError as Error, then just run expected completion as normal
+			completion(result.flatMapError({ .failure($0) }))
+		}
 	}
 
 	func loadPokemonList(completion: ((PokemonResult.ListResult) -> Void)? = nil) {
@@ -34,16 +50,13 @@ class PokemonController: ObservableObject {
 
 		request.addValue(.contentType(type: .json), forHTTPHeaderField: .commonKey(key: .contentType))
 
-		NetworkHandler.default.transferMahCodableDatas(with: request) { (results: Result<PokemonPagingResult, NetworkError>) in
-			let saveLocal = results.flatMap { pagingResult -> Result<[PokemonResult], NetworkError> in
+		genericNetworkingRequest(request: request) { (results: Result<PokemonPagingResult, Error>) in
+			let saveLocal = results.flatMap { pagingResult -> PokemonResult.ListResult in
 				let pokemons = pagingResult.results
 				DispatchQueue.main.async {
 					self.pokemonList = pokemons
 				}
 				return .success(pokemons)
-			}
-			.flatMapError { error -> PokemonResult.ListResult in
-				.failure(error)
 			}
 			completion?(saveLocal)
 		}
@@ -60,15 +73,12 @@ class PokemonController: ObservableObject {
 			return
 		}
 
-		NetworkHandler.default.transferMahCodableDatas(with: request) { (results: Result<Pokemon, NetworkError>) in
-			let saveLocal = results.flatMap { pokemon -> Result<Pokemon, NetworkError> in
+		genericNetworkingRequest(request: request) { (results: Pokemon.SingleResult) in
+			let saveLocal = results.flatMap { pokemon -> Pokemon.SingleResult in
 				DispatchQueue.main.async {
 					self.cachedPokemon[pokemon.id] = pokemon
 				}
 				return .success(pokemon)
-			}
-			.flatMapError { error -> Pokemon.SingleResult in
-				.failure(error)
 			}
 			completion?(saveLocal)
 		}
