@@ -53,6 +53,13 @@ class PokemonController: ObservableObject {
 		var request = pokemonResult.url.request
 		request.addValue(.contentType(type: .json), forHTTPHeaderField: .commonKey(key: .contentType))
 
+		if let cached = cachedPokemon[pokemonResult.id] {
+			DispatchQueue.main.async {
+				completion?(.success(cached))
+			}
+			return
+		}
+
 		NetworkHandler.default.transferMahCodableDatas(with: request) { (results: Result<Pokemon, NetworkError>) in
 			let saveLocal = results.flatMap { pokemon -> Result<Pokemon, NetworkError> in
 				DispatchQueue.main.async {
