@@ -23,17 +23,17 @@ struct PokemonDetail: View {
 		self.pokemon = detailCoordinator.pokemonController.cachedPokemon[pokemonResult.id]
 	}
 
-    var body: some View {
+	var body: some View {
 		Text(pokemon?.name ?? "Loading")
 			.onAppear {
 				pokemonController.loadPokemon(from: pokemonResult)
 			}
-    }
+	}
 }
 
 struct PokemonDetail_Previews: PreviewProvider {
-    static var previews: some View {
+	static var previews: some View {
 		let dodrio = PokemonResult(name: "dodrio", url: URL(string: "https://pokeapi.co/api/v2/pokemon/85/")!)
 		PokemonDetail(pokemonResult: dodrio, detailCoordinator: MainNavCoordinator(pokemonController: PokemonController()))
-    }
+	}
 }

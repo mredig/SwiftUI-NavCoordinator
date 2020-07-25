@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol NavCoordinator: AnyObject {
 	var childCoordinators: [NavCoordinator] { get set }
 }

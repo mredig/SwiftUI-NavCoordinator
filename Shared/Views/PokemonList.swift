@@ -12,15 +12,15 @@ protocol PokemonListNavCoordinator: PokemonControllerContainingNavCoordinator {
 }
 
 struct PokemonList: View {
-
+	
 	let navCoordinator: PokemonListNavCoordinator
 	@ObservedObject var pokemonController: PokemonController
-
+	
 	init(navCoordinator: PokemonListNavCoordinator) {
 		self.navCoordinator = navCoordinator
 		self.pokemonController = navCoordinator.pokemonController
 	}
-
+	
 	var body: some View {
 		List(pokemonController.pokemonList, id: \.id) { pokemon in
 			NavigationLink(
@@ -34,7 +34,7 @@ struct PokemonList: View {
 }
 
 struct PokemonList_Previews: PreviewProvider {
-    static var previews: some View {
+	static var previews: some View {
 		PokemonList(navCoordinator: MainNavCoordinator(pokemonController: PokemonController()))
-    }
+	}
 }

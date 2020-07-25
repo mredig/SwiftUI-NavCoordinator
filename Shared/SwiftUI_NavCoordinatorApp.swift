@@ -10,14 +10,13 @@ import SwiftUI
 @main
 struct SwiftUI_NavCoordinatorApp: App {
 
-//	@StateObject var pokemonController = PokemonController()
 	let coordinator = MainNavCoordinator(pokemonController: PokemonController())
 
-    var body: some Scene {
-        WindowGroup {
+	var body: some Scene {
+		WindowGroup {
 			NavigationView {
 				PokemonList(navCoordinator: coordinator)
 			}
-        }
-    }
+		}
+	}
 }
