@@ -52,14 +52,14 @@ struct PokemonMove: Codable {
 }
 
 struct PokemonSprites: Codable {
-	let backFemale: URL
-	let backShinyFemale: URL
-	let backDefault: URL
-	let frontFemale: URL
-	let frontShinyFemale: URL
-	let backShiny: URL
-	let frontDefault: URL
-	let frontShiny: URL
+	let backFemale: URL?
+	let backShinyFemale: URL?
+	let backDefault: URL?
+	let frontFemale: URL?
+	let frontShinyFemale: URL?
+	let backShiny: URL?
+	let frontDefault: URL?
+	let frontShiny: URL?
 }
 
 struct PokemonStatContainer: Codable {
@@ -69,8 +69,8 @@ struct PokemonStatContainer: Codable {
 }
 
 struct PokemonStat: Codable {
-	let id: Int
+	let id: Int?
 	let name: String
-	let gameIndex: Int
-	let isBattleOnly: Bool
+	let gameIndex: Int?
+	let isBattleOnly: Bool?
 }
