@@ -24,8 +24,8 @@ struct PokemonList: View {
 	}
 }
 
-//struct ContentView_Previews: PreviewProvider {
+//struct PokemonList_Previews: PreviewProvider {
 //    static var previews: some View {
-//        ContentView()
+//        PokemonList()
 //    }
 //}

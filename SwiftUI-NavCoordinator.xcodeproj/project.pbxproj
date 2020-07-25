@@ -3,16 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		334AD4AB24CCAD21009CD0DF /* NavCoordintor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334AD4AA24CCAD21009CD0DF /* NavCoordintor.swift */; };
+		334AD4AC24CCAD21009CD0DF /* NavCoordintor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334AD4AA24CCAD21009CD0DF /* NavCoordintor.swift */; };
+		334AD4AE24CCAF85009CD0DF /* MainNavCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334AD4AD24CCAF85009CD0DF /* MainNavCoordinator.swift */; };
+		334AD4AF24CCAF85009CD0DF /* MainNavCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334AD4AD24CCAF85009CD0DF /* MainNavCoordinator.swift */; };
+		334AD4B224CCB081009CD0DF /* PokemonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334AD4B124CCB081009CD0DF /* PokemonController.swift */; };
+		334AD4B324CCB081009CD0DF /* PokemonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334AD4B124CCB081009CD0DF /* PokemonController.swift */; };
+		334AD4B624CCB0A1009CD0DF /* NetworkHandler in Frameworks */ = {isa = PBXBuildFile; productRef = 334AD4B524CCB0A1009CD0DF /* NetworkHandler */; };
+		334AD4B824CCB0E2009CD0DF /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334AD4B724CCB0E2009CD0DF /* Pokemon.swift */; };
+		334AD4B924CCB0E2009CD0DF /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334AD4B724CCB0E2009CD0DF /* Pokemon.swift */; };
 		33C5249924CCAB50003D742B /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5249824CCAB50003D742B /* Tests_iOS.swift */; };
 		33C524A424CCAB50003D742B /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C524A324CCAB50003D742B /* Tests_macOS.swift */; };
 		33C524A624CCAB50003D742B /* SwiftUI_NavCoordinatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5247D24CCAB4E003D742B /* SwiftUI_NavCoordinatorApp.swift */; };
 		33C524A724CCAB50003D742B /* SwiftUI_NavCoordinatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5247D24CCAB4E003D742B /* SwiftUI_NavCoordinatorApp.swift */; };
-		33C524A824CCAB50003D742B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5247E24CCAB4E003D742B /* ContentView.swift */; };
-		33C524A924CCAB50003D742B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5247E24CCAB4E003D742B /* ContentView.swift */; };
+		33C524A824CCAB50003D742B /* PokemonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5247E24CCAB4E003D742B /* PokemonList.swift */; };
+		33C524A924CCAB50003D742B /* PokemonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5247E24CCAB4E003D742B /* PokemonList.swift */; };
 		33C524AA24CCAB50003D742B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33C5247F24CCAB50003D742B /* Assets.xcassets */; };
 		33C524AB24CCAB50003D742B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33C5247F24CCAB50003D742B /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -35,8 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		334AD4AA24CCAD21009CD0DF /* NavCoordintor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavCoordintor.swift; sourceTree = "<group>"; };
+		334AD4AD24CCAF85009CD0DF /* MainNavCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavCoordinator.swift; sourceTree = "<group>"; };
+		334AD4B124CCB081009CD0DF /* PokemonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonController.swift; sourceTree = "<group>"; };
+		334AD4B724CCB0E2009CD0DF /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		33C5247D24CCAB4E003D742B /* SwiftUI_NavCoordinatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_NavCoordinatorApp.swift; sourceTree = "<group>"; };
-		33C5247E24CCAB4E003D742B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		33C5247E24CCAB4E003D742B /* PokemonList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonList.swift; sourceTree = "<group>"; };
 		33C5247F24CCAB50003D742B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33C5248424CCAB50003D742B /* SwiftUI-NavCoordinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-NavCoordinator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33C5248724CCAB50003D742B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				334AD4B624CCB0A1009CD0DF /* NetworkHandler in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +97,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		334AD4B024CCAFB7009CD0DF /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				334AD4B124CCB081009CD0DF /* PokemonController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		334AD4BA24CCB0E4009CD0DF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				334AD4B724CCB0E2009CD0DF /* Pokemon.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		33C5247724CCAB4E003D742B = {
 			isa = PBXGroup;
 			children = (
@@ -98,9 +128,12 @@
 		33C5247C24CCAB4E003D742B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				334AD4B024CCAFB7009CD0DF /* Model Controller */,
+				33C524BA24CCAC67003D742B /* NavCoordinator */,
 				33C5247D24CCAB4E003D742B /* SwiftUI_NavCoordinatorApp.swift */,
-				33C5247E24CCAB4E003D742B /* ContentView.swift */,
+				33C5247E24CCAB4E003D742B /* PokemonList.swift */,
 				33C5247F24CCAB50003D742B /* Assets.xcassets */,
+				334AD4BA24CCB0E4009CD0DF /* Model */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -151,6 +184,15 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
+		33C524BA24CCAC67003D742B /* NavCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				334AD4AA24CCAD21009CD0DF /* NavCoordintor.swift */,
+				334AD4AD24CCAF85009CD0DF /* MainNavCoordinator.swift */,
+			);
+			path = NavCoordinator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,6 +209,9 @@
 			dependencies = (
 			);
 			name = "SwiftUI-NavCoordinator (iOS)";
+			packageProductDependencies = (
+				334AD4B524CCB0A1009CD0DF /* NetworkHandler */,
+			);
 			productName = "SwiftUI-NavCoordinator (iOS)";
 			productReference = 33C5248424CCAB50003D742B /* SwiftUI-NavCoordinator.app */;
 			productType = "com.apple.product-type.application";
@@ -258,6 +303,9 @@
 				Base,
 			);
 			mainGroup = 33C5247724CCAB4E003D742B;
+			packageReferences = (
+				334AD4B424CCB0A1009CD0DF /* XCRemoteSwiftPackageReference "NetworkHandler" */,
+			);
 			productRefGroup = 33C5248524CCAB50003D742B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -308,8 +356,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33C524A824CCAB50003D742B /* ContentView.swift in Sources */,
+				334AD4AB24CCAD21009CD0DF /* NavCoordintor.swift in Sources */,
+				334AD4AE24CCAF85009CD0DF /* MainNavCoordinator.swift in Sources */,
+				334AD4B224CCB081009CD0DF /* PokemonController.swift in Sources */,
+				33C524A824CCAB50003D742B /* PokemonList.swift in Sources */,
 				33C524A624CCAB50003D742B /* SwiftUI_NavCoordinatorApp.swift in Sources */,
+				334AD4B824CCB0E2009CD0DF /* Pokemon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,8 +369,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33C524A924CCAB50003D742B /* ContentView.swift in Sources */,
+				334AD4AC24CCAD21009CD0DF /* NavCoordintor.swift in Sources */,
+				334AD4AF24CCAF85009CD0DF /* MainNavCoordinator.swift in Sources */,
+				334AD4B324CCB081009CD0DF /* PokemonController.swift in Sources */,
+				33C524A924CCAB50003D742B /* PokemonList.swift in Sources */,
 				33C524A724CCAB50003D742B /* SwiftUI_NavCoordinatorApp.swift in Sources */,
+				334AD4B924CCB0E2009CD0DF /* Pokemon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -696,6 +752,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		334AD4B424CCB0A1009CD0DF /* XCRemoteSwiftPackageReference "NetworkHandler" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:mredig/NetworkHandler.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		334AD4B524CCB0A1009CD0DF /* NetworkHandler */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 334AD4B424CCB0A1009CD0DF /* XCRemoteSwiftPackageReference "NetworkHandler" */;
+			productName = NetworkHandler;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 33C5247824CCAB4E003D742B /* Project object */;
 }
