@@ -15,11 +15,15 @@ struct PokemonDetail: View {
 	let detailCoordinator: PokemonDetailNavCoordinator
 	@ObservedObject var pokemonController: PokemonController
 
-	init(pokemonResult: PokemonResult, detailCoordinator: PokemonDetailNavCoordinator) {
+	fileprivate init(pokemonResult: PokemonResult, detailCoordinator: PokemonDetailNavCoordinator, testPokemon: Pokemon? = nil) {
 		self.detailCoordinator = detailCoordinator
 		self.pokemonResult = pokemonResult
 		self.pokemonController = detailCoordinator.pokemonController
-		self.pokemon = detailCoordinator.pokemonController.cachedPokemon[pokemonResult.id]
+		self.pokemon = testPokemon ?? detailCoordinator.pokemonController.cachedPokemon[pokemonResult.id]
+	}
+
+	init(pokemonResult: PokemonResult, detailCoordinator: PokemonDetailNavCoordinator) {
+		self.init(pokemonResult: pokemonResult, detailCoordinator: detailCoordinator, testPokemon: nil)
 	}
 
 	var body: some View {
@@ -37,9 +41,13 @@ struct PokemonDetail: View {
 	}
 }
 
+import NetworkHandler
 struct PokemonDetail_Previews: PreviewProvider {
 	static var previews: some View {
-		let dodrio = PokemonResult(name: "dodrio", url: URL(string: "https://pokeapi.co/api/v2/pokemon/85/")!)
-		PokemonDetail(pokemonResult: dodrio, detailCoordinator: MainNavCoordinator(pokemonController: PokemonController()))
+		let mock = NetworkMockingSession(mockData: MockData.bulbJSON, mockError: nil, mockDelay: 0)
+		let pokontroller = PokemonController(networkLoader: mock)
+		let bulbResult = PokemonResult(name: "bulbasaur", url: URL(string: "https://pokeapi.co/api/v2/pokemon/1/")!)
+		let bulb = MockData.bulb
+		PokemonDetail(pokemonResult: bulbResult, detailCoordinator: MainNavCoordinator(pokemonController: pokontroller), testPokemon: bulb)
 	}
 }
