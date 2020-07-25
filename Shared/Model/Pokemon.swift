@@ -46,7 +46,8 @@ struct PokemonMoveContainer: Codable {
 	let move: PokemonMove
 }
 
-struct PokemonMove: Codable {
+struct PokemonMove: Codable, Hashable, Identifiable {
+	var id: Int { hashValue }
 	let name: String
 	let url: URL
 }
@@ -60,15 +61,35 @@ struct PokemonSprites: Codable {
 	let backShiny: URL?
 	let frontDefault: URL?
 	let frontShiny: URL?
+
+	var allSprites: [SpriteURL] {
+		[
+			frontDefault,
+			frontFemale,
+			frontShiny,
+			frontShinyFemale,
+			backDefault,
+			backFemale,
+			backShiny,
+			backShinyFemale,
+		].compactMap { $0 }
+	}
+
+	typealias SpriteURL = URL
 }
 
-struct PokemonStatContainer: Codable {
+extension PokemonSprites.SpriteURL: Identifiable {
+	public var id: Int { hashValue }
+}
+
+struct PokemonStatContainer: Codable, Hashable, Identifiable {
+	public var id: Int { hashValue }
 	let stat: PokemonStat
 	let effort: Int
 	let baseStat: Int
 }
 
-struct PokemonStat: Codable {
+struct PokemonStat: Codable, Hashable {
 	let id: Int?
 	let name: String
 	let gameIndex: Int?

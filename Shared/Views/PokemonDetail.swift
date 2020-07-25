@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 protocol PokemonDetailNavCoordinator: PokemonControllerContainingNavCoordinator {}
 
@@ -28,9 +29,34 @@ struct PokemonDetail: View {
 
 	var body: some View {
 		if let pokemon = pokemon {
-			HStack {
-				Text(pokemon.name)
-				Text("\(pokemon.id)")
+			VStack {
+				HStack(alignment: .firstTextBaseline) {
+					Text(pokemon.name.capitalized)
+						.font(.title)
+					Text("\(pokemon.id)")
+				}
+				HStack(alignment: .top) {
+					VStack(alignment: .leading) {
+						Text("Base Stats:")
+							.font(.title2)
+						ForEach(pokemon.stats) { statContainer in
+							Text("\(statContainer.stat.name.capitalized): \(statContainer.baseStat)")
+						}
+					}
+					.padding(.leading)
+					List(pokemon.moves.map(\.move)) { move in
+						Text(move.name.capitalized)
+					}
+				}
+				ScrollView(.horizontal) {
+					LazyHStack(alignment: .bottom, content: {
+						ForEach(pokemon.sprites.allSprites) { spriteURL in
+							WebImage(url: spriteURL)
+						}
+					})
+					.frame(maxHeight: 100)
+				}
+
 			}
 		} else {
 			Text("Loading")

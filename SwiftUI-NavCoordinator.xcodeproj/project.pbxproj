@@ -32,6 +32,7 @@
 		33C524A924CCAB50003D742B /* PokemonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5247E24CCAB4E003D742B /* PokemonList.swift */; };
 		33C524AA24CCAB50003D742B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33C5247F24CCAB50003D742B /* Assets.xcassets */; };
 		33C524AB24CCAB50003D742B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33C5247F24CCAB50003D742B /* Assets.xcassets */; };
+		33D15C2B24CCD8D100FBB6CF /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 33D15C2A24CCD8D100FBB6CF /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33D15C2B24CCD8D100FBB6CF /* SDWebImageSwiftUI in Frameworks */,
 				334AD4B624CCB0A1009CD0DF /* NetworkHandler in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,6 +245,7 @@
 			name = "SwiftUI-NavCoordinator (iOS)";
 			packageProductDependencies = (
 				334AD4B524CCB0A1009CD0DF /* NetworkHandler */,
+				33D15C2A24CCD8D100FBB6CF /* SDWebImageSwiftUI */,
 			);
 			productName = "SwiftUI-NavCoordinator (iOS)";
 			productReference = 33C5248424CCAB50003D742B /* SwiftUI-NavCoordinator.app */;
@@ -337,6 +340,7 @@
 			mainGroup = 33C5247724CCAB4E003D742B;
 			packageReferences = (
 				334AD4B424CCB0A1009CD0DF /* XCRemoteSwiftPackageReference "NetworkHandler" */,
+				33D15C2924CCD8D100FBB6CF /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 33C5248524CCAB50003D742B /* Products */;
 			projectDirPath = "";
@@ -804,6 +808,14 @@
 				minimumVersion = 0.9.0;
 			};
 		};
+		33D15C2924CCD8D100FBB6CF /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -811,6 +823,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 334AD4B424CCB0A1009CD0DF /* XCRemoteSwiftPackageReference "NetworkHandler" */;
 			productName = NetworkHandler;
+		};
+		33D15C2A24CCD8D100FBB6CF /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33D15C2924CCD8D100FBB6CF /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
