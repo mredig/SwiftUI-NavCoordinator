@@ -18,7 +18,7 @@ struct PokemonList: View {
 	}
 
 	var body: some View {
-		List(pokemonController.localPokemon, id: \Pokemon.id) { pokemon in
+		List(pokemonController.pokemonList, id: \.id) { pokemon in
 			Text(pokemon.name)
 		}
 	}

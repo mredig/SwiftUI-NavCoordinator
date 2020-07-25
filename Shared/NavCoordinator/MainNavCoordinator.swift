@@ -15,6 +15,7 @@ class MainNavCoordinator: NavCoordinator {
 	init(pokemonController: PokemonController) {
 		self.pokemonController = pokemonController
 		print("inited new coordinator")
+		pokemonController.loadPokemonList()
 	}
 
 }

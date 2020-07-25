@@ -7,6 +7,28 @@
 
 import Foundation
 
+struct PokemonPagingResult: Codable {
+	typealias ListResult = Result<[Self], Error>
+	typealias SingleResult = Result<Self, Error>
+
+	let count: Int
+	let next: URL?
+	let previous: URL?
+
+	let results: [PokemonResult]
+}
+
+struct PokemonResult: Codable {
+	typealias ListResult = Result<[Self], Error>
+	typealias SingleResult = Result<Self, Error>
+
+	var id: Int {
+		Int(self.url.lastPathComponent)!
+	}
+	let name: String
+	let url: URL
+}
+
 struct Pokemon: Codable {
 	typealias ListResult = Result<[Pokemon], Error>
 	typealias SingleResult = Result<Pokemon, Error>
