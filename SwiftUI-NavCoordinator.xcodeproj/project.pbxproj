@@ -113,6 +113,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		334AD4BB24CCBCB1009CD0DF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				33C5247E24CCAB4E003D742B /* PokemonList.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		33C5247724CCAB4E003D742B = {
 			isa = PBXGroup;
 			children = (
@@ -130,10 +138,10 @@
 			children = (
 				334AD4B024CCAFB7009CD0DF /* Model Controller */,
 				33C524BA24CCAC67003D742B /* NavCoordinator */,
-				33C5247D24CCAB4E003D742B /* SwiftUI_NavCoordinatorApp.swift */,
-				33C5247E24CCAB4E003D742B /* PokemonList.swift */,
-				33C5247F24CCAB50003D742B /* Assets.xcassets */,
+				334AD4BB24CCBCB1009CD0DF /* Views */,
 				334AD4BA24CCB0E4009CD0DF /* Model */,
+				33C5247F24CCAB50003D742B /* Assets.xcassets */,
+				33C5247D24CCAB4E003D742B /* SwiftUI_NavCoordinatorApp.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";

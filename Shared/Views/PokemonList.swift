@@ -19,13 +19,14 @@ struct PokemonList: View {
 
 	var body: some View {
 		List(pokemonController.pokemonList, id: \.id) { pokemon in
-			Text(pokemon.name)
+			Text(pokemon.name.capitalized)
 		}
+		.navigationTitle("Pokemons!")
 	}
 }
 
-//struct PokemonList_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PokemonList()
-//    }
-//}
+struct PokemonList_Previews: PreviewProvider {
+    static var previews: some View {
+		PokemonList(navCoordinator: MainNavCoordinator(pokemonController: PokemonController()))
+    }
+}
