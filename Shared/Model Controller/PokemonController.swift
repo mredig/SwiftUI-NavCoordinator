@@ -37,7 +37,9 @@ class PokemonController: ObservableObject {
 		NetworkHandler.default.transferMahCodableDatas(with: request) { (results: Result<PokemonPagingResult, NetworkError>) in
 			let saveLocal = results.flatMap { pagingResult -> Result<[PokemonResult], NetworkError> in
 				let pokemons = pagingResult.results
-				self.pokemonList = pokemons
+				DispatchQueue.main.async {
+					self.pokemonList = pokemons
+				}
 				return .success(pokemons)
 			}
 			.flatMapError { error -> PokemonResult.ListResult in
