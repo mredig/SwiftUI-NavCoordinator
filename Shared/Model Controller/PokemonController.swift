@@ -49,4 +49,21 @@ class PokemonController: ObservableObject {
 		}
 	}
 
+	func loadPokemon(from pokemonResult: PokemonResult, completion: ((Pokemon.SingleResult) -> Void)? = nil) {
+		var request = pokemonResult.url.request
+		request.addValue(.contentType(type: .json), forHTTPHeaderField: .commonKey(key: .contentType))
+
+		NetworkHandler.default.transferMahCodableDatas(with: request) { (results: Result<Pokemon, NetworkError>) in
+			let saveLocal = results.flatMap { pokemon -> Result<Pokemon, NetworkError> in
+				DispatchQueue.main.async {
+					self.cachedPokemon[pokemon.id] = pokemon
+				}
+				return .success(pokemon)
+			}
+			.flatMapError { error -> Pokemon.SingleResult in
+				.failure(error)
+			}
+			completion?(saveLocal)
+		}
+	}
 }

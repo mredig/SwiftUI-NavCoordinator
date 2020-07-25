@@ -19,7 +19,11 @@ struct PokemonList: View {
 
 	var body: some View {
 		List(pokemonController.pokemonList, id: \.id) { pokemon in
-			Text(pokemon.name.capitalized)
+			NavigationLink(
+				destination: PokemonDetail(pokemonResult: pokemon, detailCoordinator: navCoordinator),
+				label: {
+					Text(pokemon.name.capitalized)
+				})
 		}
 		.navigationTitle("Pokemons!")
 	}
