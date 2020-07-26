@@ -5,13 +5,13 @@
 //  Created by Michael Redig on 7/25/20.
 //
 
-import Foundation
+import SwiftUI
 
 protocol PokemonControllerContainingNavCoordinator: NavCoordinator {
 	var pokemonController: PokemonController { get }
 }
 
-class MainNavCoordinator: PokemonControllerContainingNavCoordinator {
+class MainNavCoordinator: PokemonControllerContainingNavCoordinator, NavCoordinatorStarter {
 	var childCoordinators: [NavCoordinator] = []
 
 	let pokemonController: PokemonController
@@ -22,6 +22,11 @@ class MainNavCoordinator: PokemonControllerContainingNavCoordinator {
 		pokemonController.loadPokemonList()
 	}
 
+	func start() -> some View {
+		NavigationView {
+			PokemonList(navCoordinator: self)
+		}
+	}
 }
 
 extension MainNavCoordinator: PokemonListNavCoordinator {

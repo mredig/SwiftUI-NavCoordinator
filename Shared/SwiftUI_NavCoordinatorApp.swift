@@ -14,9 +14,7 @@ struct SwiftUI_NavCoordinatorApp: App {
 
 	var body: some Scene {
 		WindowGroup {
-			NavigationView {
-				PokemonList(navCoordinator: coordinator)
-			}
+			coordinator.start()
 		}
 	}
 }
