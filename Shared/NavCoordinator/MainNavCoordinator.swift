@@ -14,10 +14,13 @@ protocol PokemonControllerContainingNavCoordinator: NavCoordinator {
 class MainNavCoordinator: PokemonControllerContainingNavCoordinator, NavCoordinatorStarter {
 	var childCoordinators: [NavCoordinator] = []
 
+	let pokeDetailCoordinator: DetailNavCoordinator
+
 	let pokemonController: PokemonController
 
 	init(pokemonController: PokemonController) {
 		self.pokemonController = pokemonController
+		self.pokeDetailCoordinator = DetailNavCoordinator(pokemonController: pokemonController)
 		print("inited new coordinator")
 		pokemonController.loadPokemonList()
 	}
@@ -31,8 +34,6 @@ class MainNavCoordinator: PokemonControllerContainingNavCoordinator, NavCoordina
 
 extension MainNavCoordinator: PokemonListNavCoordinator {
 	func getPokemonDetailView(from result: PokemonResult) -> PokemonDetail {
-		PokemonDetail(pokemonResult: result, detailCoordinator: self)
+		pokeDetailCoordinator.detailView(from: result)
 	}
 }
-
-extension MainNavCoordinator: PokemonDetailNavCoordinator {}

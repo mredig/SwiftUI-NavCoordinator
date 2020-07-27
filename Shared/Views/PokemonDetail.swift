@@ -74,6 +74,9 @@ struct PokemonDetail_Previews: PreviewProvider {
 		let pokontroller = PokemonController(networkLoader: mock)
 		let bulbResult = PokemonResult(name: "bulbasaur", url: URL(string: "https://pokeapi.co/api/v2/pokemon/1/")!)
 		let bulb = MockData.bulb
-		PokemonDetail(pokemonResult: bulbResult, detailCoordinator: MainNavCoordinator(pokemonController: pokontroller), testPokemon: bulb)
+		let coord = DetailNavCoordinator(pokemonController: pokontroller)
+		PokemonDetail(pokemonResult: bulbResult,
+					  detailCoordinator: coord,
+					  testPokemon: bulb)
 	}
 }
