@@ -62,6 +62,8 @@ struct AsyncImage<Placeholder: View>: View {
 	let placeholder: Placeholder
 	@ObservedObject var loader: AsyncImageLoader
 
+	private var imageConfigurations: [(Image) -> Image] = []
+
 	// tracking state of whether `onAppear` has run yet or not to prevent `onDisappear` from running first
 	@State private var appearances = 0
 
@@ -74,7 +76,7 @@ struct AsyncImage<Placeholder: View>: View {
 	private var image: some View {
 		Group {
 			if let image = loader.image {
-				Image(uiImage: image)
+				runConfigurations(image: image)
 			} else {
 				placeholder
 					.onAppear {
@@ -94,6 +96,39 @@ struct AsyncImage<Placeholder: View>: View {
 
 	var body: some View {
 		image
+	}
+
+	func runConfigurations(image: UIImage) -> some View {
+		imageConfigurations.reduce(Image(uiImage: image)) { (previous, configuration) in
+			configuration(previous)
+		}
+	}
+}
+
+// MARK: - Image Configurations
+extension AsyncImage {
+	private func configure(_ block: @escaping (Image) -> Image) -> AsyncImage {
+		var result = self
+		result.imageConfigurations.append(block)
+		return result
+	}
+
+	func resizable(
+		capInsets: EdgeInsets = EdgeInsets(),
+		resizingMode: Image.ResizingMode = .stretch) -> AsyncImage {
+		configure { $0.resizable(capInsets: capInsets, resizingMode: resizingMode) }
+	}
+
+	func renderingMode(_ renderingMode: Image.TemplateRenderingMode?) -> AsyncImage {
+		configure { $0.renderingMode(renderingMode) }
+	}
+
+	func interpolation(_ interpolation: Image.Interpolation) -> AsyncImage {
+		configure { $0.interpolation(interpolation) }
+	}
+
+	func antialiased(_ isAntialiased: Bool) -> AsyncImage {
+		configure { $0.antialiased(isAntialiased) }
 	}
 }
 

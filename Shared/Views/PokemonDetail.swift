@@ -56,9 +56,11 @@ struct PokemonDetail: View {
 									.frame(minWidth: 50, minHeight: 50)
 									.padding()
 							}
+							.resizable()
+							.aspectRatio(contentMode: .fit)
 						}
 					})
-					.frame(maxHeight: 100)
+					.frame(maxHeight: 150)
 				}
 
 			}
@@ -75,10 +77,10 @@ import NetworkHandler
 struct PokemonDetail_Previews: PreviewProvider {
 	static var previews: some View {
 		let mock = NetworkMockingSession(mockData: MockData.bulbJSON, mockError: nil, mockDelay: 0)
-		let pokontroller = PokemonController(networkLoader: mock)
+		let pokeController = PokemonController(networkLoader: mock)
 		let bulbResult = PokemonResult(name: "bulbasaur", url: URL(string: "https://pokeapi.co/api/v2/pokemon/1/")!)
 		let bulb = MockData.bulb
-		let coord = DetailNavCoordinator(pokemonController: pokontroller)
+		let coord = DetailNavCoordinator(pokemonController: pokeController)
 		PokemonDetail(pokemonResult: bulbResult,
 					  detailCoordinator: coord,
 					  testPokemon: bulb)
