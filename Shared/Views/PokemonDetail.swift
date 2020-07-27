@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 protocol PokemonDetailNavCoordinator: PokemonControllerContainingNavCoordinator {}
 
@@ -51,7 +50,12 @@ struct PokemonDetail: View {
 				ScrollView(.horizontal) {
 					LazyHStack(alignment: .bottom, content: {
 						ForEach(pokemon.sprites.allSprites) { spriteURL in
-							WebImage(url: spriteURL)
+							let loader = AsyncImageLoader()
+							AsyncImage(imageURL: spriteURL, loader: loader) {
+								ProgressView()
+									.frame(minWidth: 50, minHeight: 50)
+									.padding()
+							}
 						}
 					})
 					.frame(maxHeight: 100)
